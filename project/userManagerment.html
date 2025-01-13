@@ -69,8 +69,7 @@
                             </div>
                         </div>
                         <div class="popup__button create__button">
-                            <button type="button" class="button--cancel"
-                                onclick="closeCreateUserPopup()">Cancel</button>
+                            <button class="button--cancel" onclick="closeCreateUserPopup()">Cancel</button>
                             <button type="submit" id="buttonCreate" class="button--create" id="buttonCreate"
                                 onclick="createUser(this)">Create
                                 User</button>
@@ -127,9 +126,7 @@
     </div>
 
     <script src="./js/userManagermnet.js"></script>
-    <script src="./js/signin.js"></script>
     <script type="text/javascript">
-        // event.preventDefault();
         ScrollReveal().reveal('.scroll', {
             delay: 200,
             duration: 400,
@@ -145,10 +142,6 @@
             easing: 'ease-in-out',
             opacity: 0
         });
-        const test = async () => {
-            alert('Hello');
-        }
-
     </script>
 </body>
 

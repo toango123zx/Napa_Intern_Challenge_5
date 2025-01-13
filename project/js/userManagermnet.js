@@ -51,14 +51,11 @@ const closeDeleteUserPopup = () => {
 let _listUser = []
 let _timeout;
 
-const _getUserApi = "https://crudnodejs-production.up.railway.app/api/users"
-const _createUserApi = "https://crudnodejs-production.up.railway.app/api/users";
-const _updateUserApi = "https://crudnodejs-production.up.railway.app/api/users/";
-const _deleteUserApi = "https://crudnodejs-production.up.railway.app/api/users/";
+const API_URL = "https://crudnodejs-production.up.railway.app/api/users"
 
 const getuser = async () => {
     try {
-        const listUser = await (await fetch(_getUserApi)).json();
+        const listUser = await (await fetch(API_URL)).json();
         const ulElement = document.querySelector('.user__list');
         if (ulElement) {
             ulElement.innerHTML = '';
@@ -144,7 +141,7 @@ const createUser = async () => {
         }
 
         try {
-            const result = await fetch("https://crudnodejs-production.up.railway.app/api/users", {
+            const result = await fetch(API_URL, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -202,7 +199,7 @@ const updateUser = async (buttonUpdate) => {
     const email = emailInput.value.trim();
 
 
-    const updateUserApi = _updateUserApi + buttonUpdate.dataset.id;
+    const updateUserApi = API_URL + "/" + buttonUpdate.dataset.id;
     document.getElementById("updateFrom").addEventListener("submit", async function handleSubmit(event) {
         event.preventDefault();
         if (!username) {
@@ -252,7 +249,7 @@ const updateUser = async (buttonUpdate) => {
 }
 
 const deleteUser = async (buttonDelete) => {
-    const deleteUserApi = _updateUserApi + buttonDelete.dataset.id;
+    const deleteUserApi = API_URL + "/" + buttonDelete.dataset.id;
 
     try {
         const result = await fetch(deleteUserApi, {
