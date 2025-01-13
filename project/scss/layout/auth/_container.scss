@@ -1,0 +1,216 @@
+@use '../../base/variables' as var;
+@use '../../base/mixins' as mixin;
+
+.auth {
+    height: 100vh !important;
+
+    &__background {
+        position: relative;
+        display: none;
+        max-height: 188px;
+        width: 100%;
+        border-radius: 16px;
+        overflow: hidden;
+
+        @include mixin.respond-to(md) {
+            display: block;
+        }
+
+        @include mixin.respond-to(lg) {
+            width: 50%;
+            max-height: 100%;
+            height: 100%;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+
+        &--blur {
+            background-color: #5921b2;
+            flex: none;
+            inset: 0;
+            mix-blend-mode: color;
+            overflow: hidden;
+            position: absolute;
+        }
+    }
+
+    &__container {
+        height: 100%;
+        width: 100%;
+        background-color: var.$white;
+        padding: 0 32px 48px 32px;
+        border-radius: 16px;
+        border: 1px solid var.$gray-border;
+        @include mixin.layout-flex(var.$flex-column, var.$flex-start, var.$flex-center, 45px);
+
+        @include mixin.respond-to(md) {
+            padding: 0 48px 48px 48px;
+
+        }
+
+        @include mixin.respond-to(lg) {
+            width: 50%;
+            padding: 0 112px 48px 112px;
+
+        }
+    }
+}
+
+.auth .box-container {
+    width: 100%;
+    height: 100%;
+    @include mixin.layout-flex(var.$flex-column, var.$flex-start, var.$flex-center, 48px);
+
+    .logo {
+        @include mixin.layout-flex(var.$flex-row, var.$flex-center, var.$flex-center, 9px);
+
+        img {
+            width: 24px;
+            height: 24px;
+        }
+
+        h6 {
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 24px;
+        }
+    }
+
+    .content {
+        width: 100%;
+        height: 100%;
+        @include mixin.layout-flex(var.$flex-column, var.$flex-space-between, var.$flex-center);
+
+        &__container {
+            width: 100%;
+            @include mixin.layout-flex(var.$flex-column, var.$flex-start, var.$flex-center, 32px);
+        }
+
+        &__title {
+            @include mixin.layout-flex(var.$flex-column, var.$flex-center, var.$flex-center, 8px);
+
+            h6 {
+                font-size: 25px;
+                font-weight: 600;
+                line-height: 32px;
+                text-align: center;
+            }
+
+            p {
+                color: #45454f;
+                font-size: 13px;
+                font-weight: 400;
+                line-height: 20px;
+                text-align: center;
+            }
+        }
+
+        &__input {
+            width: 100%;
+            @include mixin.layout-flex(var.$flex-column, var.$flex-start, var.$flex-start, 20px);
+
+            .input {
+                width: 100%;
+                @include mixin.layout-flex(var.$flex-column, var.$flex-start, var.$flex-start, 8px);
+            }
+
+            h6 {
+                font-size: 14px;
+                font-weight: 500;
+                line-height: 20px;
+            }
+
+            input {
+                width: 100%;
+                padding: 12px 15px;
+                border-radius: 8px;
+                font-size: 16px;
+                border: 1px solid var.$gray-border;
+                max-height: 42px;
+
+                &:focus {
+                    border: 2px solid var.$purple-hover; // đậm khi focus
+                    outline: none;
+                }
+            }
+
+        }
+
+        .content__button {
+
+            width: 100%;
+            @include mixin.layout-flex(var.$flex-column, var.$flex-start, var.$flex-center, 12px);
+
+            button {
+                max-height: 42px;
+                width: 100%;
+                padding: 11px 0;
+                font-size: 14px;
+                font-weight: 500;
+                line-height: 20px;
+                border-radius: 8px;
+                @include mixin.layout-flex(var.$flex-row, var.$flex-center, var.$flex-center);
+                cursor: pointer;
+            }
+
+            &--submit {
+                background-color: var.$purple-background;
+                border: 1px solid var.$purple-border;
+                color: var.$white;
+
+                &:hover {
+                    background-color: var.$purple-hover;
+                }
+            }
+
+            &--social {
+                gap: 8px !important;
+                color: var.$black;
+                border: 1px solid var.$gray-border;
+                background-color: var.$white;
+
+                &:hover {
+                    border: 1px solid var.$black;
+                }
+
+                img {
+                    width: 20px;
+                    height: 20px;
+                    object-fit: cover;
+                }
+            }
+        }
+
+        &__link {
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 20px;
+            @include mixin.layout-flex(var.$flex-row, var.$flex-center, var.$flex-center, 8px);
+
+            span {
+                color: #45454f;
+            }
+
+            a {
+                color: var.$purple-background;
+                font-weight: 500;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+
+            }
+        }
+    }
+}
+
+
+
+.signup {
+    .auth__container {
+        gap: 60px;
+    }
+}

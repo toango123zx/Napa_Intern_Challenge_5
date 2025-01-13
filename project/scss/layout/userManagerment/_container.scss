@@ -1,0 +1,308 @@
+@use '../../base/mixins' as mixin;
+@use '../../base/variables' as var;
+
+.user-managerment {
+    .wrap {
+        width: 100%;
+        height: 100%;
+        background-color: #f3f4f6;
+        padding: 16px;
+        margin: 0 auto;
+    }
+
+    &__container {
+        max-width: 862px;
+        margin: 0 auto;
+        padding: 24px;
+        @include mixin.layout-flex(var.$flex-column, var.$flex-start, var.$flex-start, 24px);
+        border: 1px solid #e5e7eb;
+        background-color: #FFFFFF;
+        border-radius: 8px;
+
+        h2 {
+            font-size: 1.5rem;
+
+        }
+    }
+
+    &__content {
+        width: 100%;
+    }
+
+    &__search {
+        width: 100%;
+        @include mixin.layout-flex(var.$flex-row, var.$flex-start, var.$flex-start, 8px);
+        margin-bottom: 16px;
+
+        input {
+            max-height: 40px;
+            width: calc(100% - 120px);
+            padding: 8px 12px;
+            font-size: 1rem;
+            line-height: 1.5rem;
+            border-radius: 8px;
+
+            border: 1px solid #e5e7eb;
+            outline: none;
+            transition: box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out;
+
+            &:focus {
+                --ring: 0 0% 3.9%;
+                --background: 0 0% 100%;
+                --tw-ring-offset-width: 2px;
+                --tw-ring-inset: ;
+                --tw-ring-offset-color: hsl(var(--background));
+                --tw-ring-color: hsl(var(--ring));
+                --tw-shadow: 0 0 #0000;
+                --tw-shadow-colored: 0 0 #0000;
+                --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+                --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+                box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+            }
+        }
+
+        button {
+            max-height: 40px;
+            padding: 10px 16px;
+            font-size: .875rem;
+            line-height: 1.25rem;
+            font-weight: 500;
+            background-color: var.$black;
+            color: var.$white;
+            border-radius: 8px;
+
+            &:hover {
+                background-color: #2f2f2f;
+            }
+        }
+    }
+
+    .user {
+        &__list {
+            width: 100%;
+            @include mixin.layout-flex(var.$flex-column, var.$flex-start, var.$flex-start, 16px);
+        }
+
+        &__item {
+            width: 100%;
+            padding: 16px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            @include mixin.layout-flex(var.$flex-row, var.$flex-space-between, var.$flex-center, 1px);
+
+            h3 {
+                font-weight: 600;
+            }
+
+            p {
+                font-size: .875rem;
+                line-height: 1.25rem;
+                color: #6b7280;
+            }
+        }
+
+        &__information {
+            @include mixin.layout-flex(var.$flex-column, var.$flex-start, var.$flex-start);
+        }
+
+        &__nav {
+            @include mixin.layout-flex(var.$flex-row, var.$flex-start, var.$flex-center, 8px);
+
+            button {
+                @include mixin.layout-flex(var.$flex-row, var.$flex-center, var.$flex-center);
+                height: 36px;
+                padding: 0 12px;
+                border-radius: 8px;
+            }
+
+            .button {
+                &--edit {
+                    background-color: var.$white;
+                    border: 1px solid #e5e7eb;
+
+                    &:hover {
+                        background-color: var.$gray-hover;
+                    }
+                }
+
+                &--delete {
+                    background-color: #ef4444;
+                    color: var.$white;
+
+                    &:hover {
+                        background-color: #f35a58;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.popup {
+    &__wrap {
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: #000000cc;
+        width: 100%;
+        height: 100%;
+        @include mixin.layout-flex(var.$flex-column, var.$flex-center, var.$flex-center);
+        display: none;
+    }
+
+    &__container {
+        background-color: var.$white;
+        max-width: 512px;
+        max-height: 300px;
+        width: 100%;
+        height: 100%;
+        padding: 24px;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        @include mixin.layout-flex(var.$flex-column, var.$flex-start, var.$flex-start, 24px);
+
+        form {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &__nav {
+        width: 100%;
+        @include mixin.layout-flex(var.$flex-row, var.$flex-space-between, var.$flex-center);
+
+        h2 {
+            letter-spacing: -.025em;
+            font-weight: 600;
+            line-height: 1;
+            font-size: 1.125rem;
+        }
+
+        button {
+            padding: 4px;
+            display: flex;
+            background-color: var.$white;
+
+            img {
+                width: 8px;
+                height: 8px;
+                object-fit: cover;
+            }
+        }
+    }
+
+    &__input {
+        width: 100%;
+        @include mixin.layout-flex(var.$flex-column, var.$flex-start, var.$flex-start, 16px);
+
+        .input {
+            width: 100%;
+            @include mixin.layout-flex(var.$flex-column, var.$flex-start, var.$flex-start, 10px);
+        }
+
+        h6 {
+            font-size: .875rem;
+            font-weight: 500;
+            line-height: 1;
+        }
+
+        input {
+            height: 2.5rem;
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: .875rem;
+            line-height: 1.25rem;
+            outline: none;
+            transition: box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out;
+
+            &:focus {
+                --ring: 0 0% 3.9%;
+                --background: 0 0% 100%;
+                --tw-ring-offset-width: 2px;
+                --tw-ring-inset: ;
+                --tw-ring-offset-color: hsl(var(--background));
+                --tw-ring-color: hsl(var(--ring));
+                --tw-shadow: 0 0 #0000;
+                --tw-shadow-colored: 0 0 #0000;
+                --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+                --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+                box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+            }
+        }
+    }
+
+    &__button {
+        width: 100%;
+        @include mixin.layout-flex(var.$flex-row, var.$flex-end, var.$flex-center, 8px);
+
+        button {
+            @include mixin.layout-flex(var.$flex-row, var.$flex-center, var.$flex-center);
+            height: 40px;
+            padding: 0 16px;
+            border-radius: 8px;
+        }
+
+        .button {
+            &--cancel {
+                background-color: var.$white;
+                border: 1px solid #e5e7eb;
+
+                &:hover {
+                    background-color: var.$gray-hover;
+                }
+            }
+
+            &--create {
+                background-color: var.$black;
+                color: var.$white;
+
+                &:hover {
+                    background-color: #2f2f2f;
+                }
+            }
+        }
+    }
+}
+
+.create {
+    &__container {
+        max-height: 388px;
+
+
+    }
+
+    &__information {
+        width: 100%;
+        height: 100%;
+        @include mixin.layout-flex(var.$flex-column, var.$flex-space-between, var.$flex-start);
+    }
+}
+
+.update {
+    &__container {
+        max-width: 512px;
+
+    }
+
+    &__information {
+        width: 100%;
+        height: 100%;
+        @include mixin.layout-flex(var.$flex-column, var.$flex-space-between, var.$flex-start);
+    }
+}
+
+
+.delete {
+    &__container {
+        max-height: 182px;
+        width: 100%;
+        height: 100%;
+        @include mixin.layout-flex(var.$flex-column, var.$flex-space-between, var.$flex-start, 0);
+    }
+
+    &__content {
+        @include mixin.layout-flex(var.$flex-column, var.$flex-start, var.$flex-start, 8px);
+    }
+}

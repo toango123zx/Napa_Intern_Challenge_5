@@ -1,0 +1,154 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <link rel="stylesheet" href="./scss/main.css">
+
+    <title>Signin</title>
+</head>
+
+<body class="managerment user-managerment">
+    <div class="wrap scroll">
+        <div class="user-managerment__container">
+            <div class="title">
+                <h2>User Managerment</h2>
+            </div>
+            <div class="user-managerment__content">
+                <div class="user-managerment__search">
+                    <input type="text" placeholder="Search user" id="searchUser" oninput="debounceSearch(event)">
+                    <button onclick="showcCreateUserPopup()">Create User</button>
+                </div>
+                <ul class="user__list">
+                    <!-- <li class="user__item">
+                        <div class="user__information">
+                            <h3>toan</h3>
+                            <p>toan@gmail.com</p>
+                        </div>
+                        <div class="user__nav">
+                            <button class="button--edit" onclick="showEditUserPopup()">Edit</button>
+                            <button class="button--delete" onclick="showDeleteUserPopup()">Delete</button>
+                        </div>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="popup__wrap scroll" id="createUserPopup">
+            <div class="popup__container create__container">
+                <div class="popup__nav">
+                    <h2>Create User</h2>
+                    <button onclick="closeCreateUserPopup()">
+                        <img src="./assets/icon/iconClose.svg" alt="iconClose">
+                    </button>
+                </div>
+                <form id="createUserForm">
+                    <div class="create__information">
+                        <div class="popup__input">
+                            <div class="input">
+                                <h6>Name</h6>
+                                <input type="text" id="username" required>
+                            </div>
+                            <div class="input">
+                                <h6>Email</h6>
+                                <input type="email" id="email" required>
+                            </div>
+                            <div class="input">
+                                <h6>Password</h6>
+                                <input type="password" id="password" name="password" required>
+                            </div>
+                        </div>
+                        <div class="popup__button create__button">
+                            <button type="button" class="button--cancel"
+                                onclick="closeCreateUserPopup()">Cancel</button>
+                            <button type="submit" id="buttonCreate" class="button--create" id="buttonCreate"
+                                onclick="createUser(this)">Create
+                                User</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="popup__wrap scroll" id="editUserPopup">
+            <div class="popup__container update__container">
+                <div class="popup__nav">
+                    <h2>Edit User</h2>
+                    <button onclick="closeEditUserPopup()">
+                        <img src="./assets/icon/iconClose.svg" alt="iconClose">
+                    </button>
+                </div>
+                <form id="updateFrom">
+                    <div class="update__information">
+                        <div class="popup__input">
+                            <div class="input">
+                                <h6>Name</h6>
+                                <input type="text" placeholder="" id="updateUsername" required>
+                            </div>
+                            <div class="input">
+                                <h6>Email</h6>
+                                <input type="email" placeholder="" id="updateEmail" required>
+                            </div>
+                        </div>
+                        <div class="popup__button create__button">
+                            <button class="button--cancel" onclick="closeEditUserPopup()">Cancel</button>
+                            <button type="submit" class="button--create" id="buttonEdit"
+                                onclick="updateUser(this)">Update
+                                User</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="popup__wrap scroll" id="deleteUserPopup">
+            <div class="popup__container delete__container">
+                <div class="popup__nav delete__content">
+                    <h2>Are you sure you want to delete this user?</h2>
+                    <p>This action cannot be undone. This will permanently delete the user toan1 and remove their data
+                        from our servers.</p>
+                </div>
+                <div class="popup__button">
+                    <button class="button--cancel" onclick="closeDeleteUserPopup()">Cancel</button>
+                    <button id="buttonDelete" class="button--create" onclick="deleteUser(this)">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/userManagermnet.js"></script>
+    <script src="./js/signin.js"></script>
+    <script type="text/javascript">
+        // event.preventDefault();
+        ScrollReveal().reveal('.scroll', {
+            delay: 200,
+            duration: 400,
+            easing: 'ease-in-out',
+            opacity: 0
+        });
+
+        ScrollReveal().reveal('.scroll--bottom', {
+            delay: 200,
+            distance: '50px',
+            origin: 'bottom',
+            duration: 400,
+            easing: 'ease-in-out',
+            opacity: 0
+        });
+        const test = async () => {
+            alert('Hello');
+        }
+
+    </script>
+</body>
+
+</html>

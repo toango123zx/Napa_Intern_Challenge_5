@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <link rel="stylesheet" href="./scss/main.css">
+
+    <title>Signin</title>
+</head>
+
+<body class="auth signup">
+    <div class="wrap">
+        <div class="auth__background scroll">
+            <img src="./assets/image/backgroundSignUp.jpg" alt="backgroundSignUp">
+            <div class="auth__background--blur"></div>
+        </div>
+        <div class="auth__container">
+            <div class="header scroll">
+                <button>
+                    <img src="./assets/icon/iconHouse.png" alt="iconHouse">
+                    <p>Go to Home</p>
+                </button>
+            </div>
+            <div class="box-container scroll--bottom">
+                <div class="logo">
+                    <img src="./assets/icon/iconLogo.png" alt="iconLogo">
+                    <h6>Dashcraft</h6>
+                </div>
+                <div class="content">
+                    <div class="content__container">
+                        <div class="content__title">
+                            <h6>Register for an account.</h6>
+                            <p>Sign up now to unlock a world of possibilities.</p>
+                        </div>
+                        <div class="content__input">
+                            <div class="input">
+                                <h6>Username</h6>
+                                <input type="text" placeholder="username" id="username">
+                            </div>
+                            <div class="input">
+                                <h6>Email</h6>
+                                <input type="email" placeholder="name@gmail.com" id="email">
+                            </div>
+                            <div class="input">
+                                <h6>Password</h6>
+                                <input type="password" placeholder="*********" id="password">
+                            </div>
+                        </div>
+                        <div class="content__button">
+                            <button class="content__button--submit" onclick="signup()">Sign Up</button>
+                            <button class="content__button--social">
+                                <img src="./assets/icon/logoGoogle.png" alt="logoGoogle">
+                                <p>Sign in with Google</p>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="content__link">
+                        <span>Already have an account?</span>
+                        <span><a href="./index.html">Sign in</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <a href="./index.html">hawha</a> -->
+    </div>
+
+    <script src="./js/signup.js"></script>
+    <script type="text/javascript">
+        ScrollReveal().reveal('.scroll', {
+            delay: 100,
+            duration: 200,
+            easing: 'ease-in-out',
+            opacity: 0
+        });
+
+        ScrollReveal().reveal('.scroll--bottom', {
+            delay: 100,
+            distance: '100px',
+            origin: 'bottom',
+            duration: 200,
+            easing: 'ease-in-out',
+            opacity: 0
+        });
+    </script>
+</body>
+
+</html>

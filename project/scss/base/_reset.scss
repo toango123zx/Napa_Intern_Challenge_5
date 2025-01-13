@@ -1,0 +1,37 @@
+@use './variables' as var;
+@use './mixins' as mixin;
+
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    font-family: "Inter", serif;
+}
+
+img {
+    object-fit: cover;
+}
+
+button {
+    cursor: pointer;
+}
+
+.button {
+    padding: var(--padding);
+    background-color: var(--background-color);
+    border-radius: var(--border-radius);
+    font-size: var(--font-size);
+    font-weight: var(--font-weight);
+    color: var(--color);
+    line-height: var(--line-height);
+}
+
+a {
+    text-decoration: none;
+    color: var.$black;
+}
+
+ul {
+    list-style-type: none;
+}
