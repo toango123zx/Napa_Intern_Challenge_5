@@ -402,25 +402,58 @@ ul {
 }
 .user-managerment .user__item h3 {
   font-weight: 600;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 .user-managerment .user__item p {
   font-size: 0.875rem;
   line-height: 1.25rem;
   color: #6b7280;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 .user-managerment .user__information {
+  width: calc(100% - 60px);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   gap: 0;
 }
-.user-managerment .user__nav {
+@media (min-width: 418px) {
+  .user-managerment .user__information {
+    width: calc(100% - 125px);
+  }
+}
+.user-managerment .user__information--email {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  align-items: center;
-  gap: 8px;
+  align-items: flex-start;
+  gap: 2px;
+  color: #6b7280;
+}
+.user-managerment .user__nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0;
+}
+@media (min-width: 418px) {
+  .user-managerment .user__nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+  }
 }
 .user-managerment .user__nav button {
   display: flex;

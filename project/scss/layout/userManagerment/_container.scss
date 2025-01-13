@@ -92,21 +92,45 @@
 
             h3 {
                 font-weight: 600;
+                display: inline-block;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 100%;
             }
 
             p {
                 font-size: .875rem;
                 line-height: 1.25rem;
                 color: #6b7280;
+                display: inline-block;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 100%;
             }
         }
 
         &__information {
+            width: calc(100% - 60px);
             @include mixin.layout-flex(var.$flex-column, var.$flex-start, var.$flex-start);
+
+            @include mixin.respond-custom(418px) {
+                width: calc(100% - 125px);
+            }
+
+            &--email {
+                @include mixin.layout-flex(var.$flex-row, var.$flex-start, var.$flex-start, 2px);
+                color: #6b7280;
+            }
         }
 
         &__nav {
-            @include mixin.layout-flex(var.$flex-row, var.$flex-start, var.$flex-center, 8px);
+            @include mixin.layout-flex(var.$flex-column, var.$flex-start, var.$flex-start);
+
+            @include mixin.respond-custom(418px) {
+                @include mixin.layout-flex(var.$flex-row, var.$flex-start, var.$flex-center, 8px);
+            }
 
             button {
                 @include mixin.layout-flex(var.$flex-row, var.$flex-center, var.$flex-center);

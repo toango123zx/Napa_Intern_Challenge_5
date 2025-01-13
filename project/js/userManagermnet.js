@@ -60,15 +60,27 @@ const getuser = async () => {
     try {
         const listUser = await (await fetch(_getUserApi)).json();
         const ulElement = document.querySelector('.user__list');
+        if (ulElement) {
+            ulElement.innerHTML = '';
+        }
+
         _listUser = listUser;
 
         listUser.forEach(user => {
+            let username = user.username;
+            let email = user.email;
+            // if (username.length > 15) {
+            //     username = username.slice(0, 15) + '...';
+            // }
+            // if (email.length > 12) {
+            //     email = email.slice(0, 15) + '...';
+            // }
             const liElement = document.createElement('li');
             liElement.classList.add('user__item');
             liElement.innerHTML = `
             <div class="user__information">
-                <h3>${user.username}</h3>
-                <p>${user.email}</p>
+                <h3>${username}</h3>
+                <p>${email}</p>
             </div>
             <div class="user__nav">
                 <button class="button--edit" onclick="showEditUserPopup(this)">Edit</button>
@@ -126,6 +138,7 @@ const createUser = async () => {
         event.preventDefault();
         if (!username) {
             alert('Username is required');
+            getuser();
             document.getElementById("createUserForm").removeEventListener("submit", handleSubmit)
             return;
         }
@@ -147,32 +160,35 @@ const createUser = async () => {
 
             if (result.status !== 201) {
                 alert(json.message);
-                document.getElementById("createUserForm").removeEventListener("submit", handleSubmit)
+                document.getElementById("createUserForm").removeEventListener("submit", handleSubmit);
+                getuser();
                 return;
             } else {
                 alert(json.message);
-                const listUser = document.querySelector('.user__list');
+                // const listUser = document.querySelector('.user__list');
 
-                const liElement = document.createElement('li');
-                liElement.classList.add('user__item');
-                liElement.innerHTML = `
-                <div class="user__information">
-                <h3>${username}</h3>
-                <p>${email}</p>
-                </div>
-                <div class="user__nav">
-                <button class="button--edit" onclick="showEditUserPopup(this)">Edit</button>
-                <button class="button--delete" onclick="showDeleteUserPopup(this)">Delete</button>
-                </div>
-                `;
+                // const liElement = document.createElement('li');
+                // liElement.classList.add('user__item');
+                // liElement.innerHTML = `
+                // <div class="user__information">
+                // <h3>${username}</h3>
+                // <p>${email}</p>
+                // </div>
+                // <div class="user__nav">
+                // <button class="button--edit" onclick="showEditUserPopup(this)">Edit</button>
+                // <button class="button--delete" onclick="showDeleteUserPopup(this)">Delete</button>
+                // </div>
+                // `;
 
-                liElement.dataset.id = json.userId;
-                listUser.appendChild(liElement);
+                // liElement.dataset.id = json.userId;
+                // listUser.appendChild(liElement);
+                getuser();
                 closeCreateUserPopup();
             }
         } catch (error) {
             alert(`error: ${error}`);
-            document.getElementById("createUserForm").removeEventListener("submit", handleSubmit)
+            getuser();
+            document.getElementById("createUserForm").removeEventListener("submit", handleSubmit);
             return
         }
     }
@@ -191,7 +207,8 @@ const updateUser = async (buttonUpdate) => {
         event.preventDefault();
         if (!username) {
             alert('Username is required');
-            document.getElementById("updateFrom").removeEventListener("submit", handleSubmit)
+            getuser();
+            document.getElementById("updateFrom").removeEventListener("submit", handleSubmit);
             return;
         }
 
@@ -211,22 +228,23 @@ const updateUser = async (buttonUpdate) => {
 
             if (result.status !== 200) {
                 alert(json.message);
-                document.getElementById("updateFrom").removeEventListener("submit", handleSubmit)
-                return;
             } else {
                 alert('Update Success');
             }
-            const listUser = Array.from(document.getElementsByClassName('user__item'));
-            listUser.forEach(li => {
-                if (li.dataset.id === buttonUpdate.dataset.id) {
-                    li.querySelector('h3').textContent = username;
-                    li.querySelector('p').textContent = email;
-                }
-            });
+            // const listUser = Array.from(document.getElementsByClassName('user__item'));
+            // listUser.forEach(li => {
+            //     if (li.dataset.id === buttonUpdate.dataset.id) {
+            //         li.querySelector('h3').textContent = username;
+            //         li.querySelector('p').textContent = email;
+            //     }
+            // });
+            getuser();
             closeEditUserPopup();
             document.getElementById("updateFrom").removeEventListener("submit", handleSubmit)
+            return
         } catch (error) {
             alert(`error: ${error}`);
+            getuser();
             document.getElementById("updateFrom").removeEventListener("submit", handleSubmit)
             return;
         }
@@ -245,15 +263,17 @@ const deleteUser = async (buttonDelete) => {
 
         if (result.status !== 200) {
             alert(json.message);
-            return;
+            // return;
         }
-        const listUser = Array.from(document.getElementsByClassName('user__item'));
-        listUser.forEach(li => {
-            if (li.dataset.id === buttonDelete.dataset.id) {
-                li.remove();
-            }
-        });
+        // const listUser = Array.from(document.getElementsByClassName('user__item'));
+        // listUser.forEach(li => {
+        //     if (li.dataset.id === buttonDelete.dataset.id) {
+        //         li.remove();
+        //     }
+        // });
+        getuser();
         closeDeleteUserPopup();
+        return
     } catch (error) {
         alert(`error: ${error}`);
         return;
